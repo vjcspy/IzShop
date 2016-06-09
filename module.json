@@ -1,0 +1,15 @@
+{
+    "name": "IzShop",
+    "alias": "izshop",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\IzShop\\Providers\\IzShopServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}
