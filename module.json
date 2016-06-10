@@ -6,7 +6,8 @@
     "active": 1,
     "order": 0,
     "providers": [
-        "Modules\\IzShop\\Providers\\IzShopServiceProvider"
+        "Modules\\IzShop\\Providers\\IzShopServiceProvider",
+        "Modules\\IzShop\\Providers\\OverMenuServiceProvider"
     ],
     "aliases":{},
     "files": [

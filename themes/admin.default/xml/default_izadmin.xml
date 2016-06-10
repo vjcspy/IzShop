@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+    <custom_assets>
+        <!--
+        - Ở đây không cần theme_name nếu custom asset đó nằm trong theme hiện tại.
+        - Còn có trường hợp custom asset lại nằm trong theme khác.
+        -->
+        <asset name="shop_config_router" source="scripts/config.router.js" dependency="" theme_name="admin.default"/>
+    </custom_assets>
+</xml>
