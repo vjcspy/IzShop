@@ -1,6 +1,6 @@
 {
 	"name": "vjcspy/izshop",
-	"vendor":"laravel-pingpong-modules",
+	"vendor":"vjcspy",
 	"type": "magento-library",
 	"description": "Manager Shop For IzAdmin",
 	"authors": [
