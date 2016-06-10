@@ -1,15 +1,26 @@
 {
-	"name": "pingpong-modules/izshop",
-	"description": "",
+	"name": "vjcspy/izshop",
+	"vendor":"laravel-pingpong-modules",
+	"type": "magento-library",
+	"description": "Manager Shop For IzAdmin",
 	"authors": [
 		{
-			"name": "Pingpong Labs",
-			"email": "pingpong.labs@gmail.com"
+			"name": "Khoi Le",
+			"email": "mr.vjcspy@gmail.com"
 		}
 	],
+	"require": {
+		"php": ">=5.5.9"
+	},
 	"autoload": {
 		"psr-4": {
 			"Modules\\IzShop\\": ""
+		}
+	},
+	"extra": {
+		"installer-name": "IzShop",
+		"installer-paths": {
+			"modules/{$name}/": ["type:magento-library"]
 		}
 	}
 }
