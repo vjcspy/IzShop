@@ -25,7 +25,14 @@ angular.module('app')
                     {className: "name", "targets": [1]},
                     {className: "sku", "targets": [2]},
                     {className: "price", "targets": [3]}
-                ]
+                ],
+                "language": {
+                    "lengthMenu": "Hiển thị&nbsp _MENU_ &nbspbản ghi mỗi trang",
+                    "zeroRecords": "Không tìm thấy dữ liệu...",
+                    "info": "Đang hiển thị trang _PAGE_ của _PAGES_",
+                    "infoEmpty": "Không tìm thấy dữ liệu...",
+                    "infoFiltered": "(Lọc từ _MAX_ bản ghi)"
+                }
             },
             filterConfig: [
                 {
