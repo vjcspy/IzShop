@@ -42,7 +42,13 @@ angular.module('app')
                     })
                     .state('shop_products.list', {
                         url: '/list',
-                        template: "<div>List product</div>"
+                        templateUrl: "modules/themes/admin.default/assets/views/shop/products/lists.html",
+                        controller: 'ListProductCtrl',
+                        resolve: load(
+                            [
+                                'angular-material-data-table',
+                                'modules/themes/admin.default/assets/scripts/controllers/shop/products/listproductctrl.js'
+                            ])
                     })
                 ;
 

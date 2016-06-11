@@ -7,7 +7,8 @@
     "order": 0,
     "providers": [
         "Modules\\IzShop\\Providers\\IzShopServiceProvider",
-        "Modules\\IzShop\\Providers\\OverMenuServiceProvider"
+        "Modules\\IzShop\\Providers\\OverMenuServiceProvider",
+        "Modules\\IzShop\\Providers\\OverConfigServiceProvider"
     ],
     "aliases":{},
     "files": [

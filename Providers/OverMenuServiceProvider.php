@@ -32,7 +32,7 @@ class OverMenuServiceProvider extends ServiceProvider {
                         'name'          => 'Products',
                         'url'           => 'shop_products',
                         'badge'         => '3',
-                        'icon-class'    => 'icon mdi-action-settings i-20',
+                        'icon-class'    => 'icon mdi-image-camera i-20',
                         'priority'      => 5,
                         'active-router' => 'shop_products',
                         'children'      => [
