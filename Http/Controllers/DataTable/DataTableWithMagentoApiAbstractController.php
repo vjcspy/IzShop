@@ -20,9 +20,7 @@ abstract class DataTableWithMagentoApiAbstractController extends MagentoApiSearc
     protected $requestData;
 
     public function getIndex(Request $request) {
-        $this->dataTableRecord['recordsTotal']    = 10;
-        $this->dataTableRecord['recordsFiltered'] = 10;
-        $this->requestData                        = $request->all();
+        $this->requestData = $request->all();
 
         $this->processSearch()
              ->processPaging();

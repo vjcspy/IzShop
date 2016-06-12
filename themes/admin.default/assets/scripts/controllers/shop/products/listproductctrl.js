@@ -16,15 +16,89 @@ angular.module('app')
                 ajax: IzAdminConfigService.getConfig('list_product_url', 'admin'),
                 "columns": [
                     {"data": "id"},
+                    {"data": "origin_image"},
                     {"data": "name"},
+                    {"data": "type_id"},
+                    {"data": "attribute_set_id"},
                     {"data": "sku"},
-                    {"data": "price"}
+                    {"data": "price"},
+                    {"data": "stock_items"},
+                    {"data": "visibility"},
+                    {"data": "status"}
                 ],
                 "columnDefs": [ //FIXME: HAVE TO FILTER BY CLASS, sẽ chuyển cái này thành code
                     {className: "id", "targets": [0]},
-                    {className: "name", "targets": [1]},
-                    {className: "sku", "targets": [2]},
-                    {className: "price", "targets": [3]}
+                    {
+                        className: "origin_image",
+                        targets: [1],
+                        render: function (data, type, row) {
+                            return '<img src="' + data + '" alt="Smiley face" height="42" width="42">';
+                        }
+                    },
+                    {className: "name", "targets": [2]},
+                    {
+                        className: "type_id", targets: [3],
+                        render: function (data, type, row) {
+                            var output;
+                            switch (data) {
+                                case 'simple':
+                                    output = 'Không tùy chọn';
+                                    break;
+                                case 'configurable':
+                                    output = 'Tùy chọn';
+                                    break;
+                            }
+                            return output;
+                        }
+                    },
+                    {className: "attribute_set_id", "targets": [4]},
+                    {className: "sku", "targets": [5]},
+                    {
+                        className: "price",
+                        targets: [6],
+                        render: function (data, type, row) {
+                            return parseFloat(data).toFixed(2);
+                        },
+                    },
+                    {
+                        className: "stock_items",
+                        targets: [7],
+                        render: function (data, type, row) {
+                            return parseInt(data.qty);
+                        },
+                    },
+                    {
+                        className: "visibility",
+                        targets: [8],
+                        render: function (data, type, row) {
+                            var output;
+                            switch (data) {
+                                case '1':
+                                    output = 'Không';
+                                    break;
+                                case '2':
+                                    output = 'Danh mục';
+                                    break;
+                                case '3':
+                                    output = 'Tìm kiếm';
+                                    break;
+                                case '4':
+                                    output = 'Tất cả';
+                                    break;
+                            }
+                            return output;
+                        }
+                    },
+                    {
+                        className: "status",
+                        targets: [9],
+                        render: function (data, type, row) {
+                            if (data == 1)
+                                return 'Bật'
+                            else
+                                return 'Tắt'
+                        }
+                    }
                 ],
                 "language": {
                     "lengthMenu": "Hiển thị&nbsp _MENU_ &nbspbản ghi mỗi trang",
