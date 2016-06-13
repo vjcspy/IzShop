@@ -195,78 +195,10 @@ angular.module('app')
                         ],
                         filterChecked: false
                     }
-                ],
-                editorOptions: [
-                    {
-                        id: "id",
-                        title: "Id",
-                        type: 'text',
-                        editAble: false
-                    },
-                    {
-                        id: "name",
-                        title: "Tên",
-                        type: 'text',
-                        editAble: true
-                    },
-                    {
-                        id: "sku",
-                        title: "Mã",
-                        type: 'text',
-                        editAble: true
-                    },
-                    {
-                        id: "description",
-                        title: "Mô tả",
-                        type: 'editor',
-                        editAble: true
-                    },
-                    {
-                        id: "price",
-                        title: "Giá",
-                        type: 'text',
-                        editAble: true
-                    }, {
-                        id: "currency",
-                        title: "Tiền tệ",
-                        type: 'select',
-                        optionsData: dataCurrency,
-                        editAble: true
-                    },
-                    {
-                        id: "image_url",
-                        title: "Ảnh",
-                        type: 'fileUpload',
-                        editAble: true
-                    },
-                    {
-                        id: "cost",
-                        title: "Chi phí",
-                        type: 'text',
-                        editAble: true
-                    },
-                    {
-                        id: "qty",
-                        title: "Số lượng",
-                        type: 'text',
-                        editAble: true
-                    },
-                    {
-                        id: "link",
-                        title: "Link",
-                        type: 'text',
-                        editAble: true
-                    },
-                    {
-                        id: "comment",
-                        title: "Chú thích",
-                        type: 'textarea',
-                        editAble: true
-                    }
                 ]
             };
 
             $scope.configDataTable = {};
-            $scope.configDataTable.isSupportNewRecord = false;
+            $scope.configDataTable.isSupportNewRecord = true;
         }
     ]);
