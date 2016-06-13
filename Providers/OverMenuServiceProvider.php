@@ -29,7 +29,7 @@ class OverMenuServiceProvider extends ServiceProvider {
                 [
                     [
                         'name_id'       => 'shop_products',
-                        'name'          => 'Products',
+                        'name'          => 'Sản Phẩm',
                         'url'           => 'shop_products',
                         'badge'         => '3',
                         'icon-class'    => 'icon mdi-image-camera i-20',
@@ -37,7 +37,7 @@ class OverMenuServiceProvider extends ServiceProvider {
                         'active-router' => 'shop_products',
                         'children'      => [
                             [
-                                'name'     => 'List',
+                                'name'     => 'Danh sách',
                                 'url'      => 'shop_products.list',
                                 'priority' => 1
                             ]
