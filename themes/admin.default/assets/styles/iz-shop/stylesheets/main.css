@@ -6,7 +6,12 @@
 .shop-product-list .type_id {
   width: 50px !important;
 }
-/* line 6, ../sass/main.scss */
+/* line 8, ../sass/main.scss */
+.shop-product-list thead tr th {
+  font-family: monospace, monospace;
+  font-weight: 600;
+}
+/* line 14, ../sass/main.scss */
 .shop-product-list td {
   vertical-align: middle !important;
 }

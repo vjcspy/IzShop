@@ -44,11 +44,16 @@ angular.module('app')
                         url: '/list',
                         templateUrl: "modules/themes/admin.default/assets/views/shop/products/lists.html",
                         controller: 'ListProductCtrl',
-                        resolve: load(
-                            [
-                                'angular-material-data-table',
-                                'modules/themes/admin.default/assets/scripts/controllers/shop/products/listproductctrl.js'
-                            ])
+                        resolve: {
+                            deps: load(
+                                [
+                                    'angular-material-data-table',
+                                    'modules/themes/admin.default/assets/scripts/controllers/shop/products/listproductctrl.js'
+                                ]).deps,
+                            productAttrSet: function (ProductEav) {
+                                return ProductEav.getProductAttrSetFromServer();
+                            }
+                        }
                     })
                 ;
 

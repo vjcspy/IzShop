@@ -6,6 +6,7 @@
         - Còn có trường hợp custom asset lại nằm trong theme khác.
         -->
         <asset name="shop_config_router" source="scripts/config.router.js" dependency="" theme_name="admin.default"/>
+        <asset name="shop_product_eav" source="scripts/services/shop/productEav.js" dependency="" theme_name="admin.default"/>
         <asset name="shop_main_style" source="styles/iz-shop/stylesheets/main.css" dependency="" theme_name="admin.default"/>
     </custom_assets>
 </xml>

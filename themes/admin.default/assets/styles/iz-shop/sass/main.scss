@@ -3,6 +3,14 @@
   .type_id {
     width: 50px !important;
   }
+  thead {
+    tr {
+      th {
+        font-family: monospace, monospace;
+        font-weight: 600;
+      }
+    }
+  }
   td {
     vertical-align: middle !important;
   }
