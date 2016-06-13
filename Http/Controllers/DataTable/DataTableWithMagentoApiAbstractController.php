@@ -39,9 +39,24 @@ abstract class DataTableWithMagentoApiAbstractController extends MagentoApiSearc
     }
 
     protected function processSearch() {
+
+        // search data
         if (isset($this->requestData['columns'])) {
             foreach ($this->requestData['columns'] as $column) {
+                if ($column['searchable'] && $column['search']['value']) {
+                    $this->magentoSearchApi->addSearchCriteria($column['data'], $column['search']['value']);
+                }
+            }
+        }
 
+        //order
+        if (isset($this->requestData['order'])) {
+            foreach ($this->requestData['order'] as $order) {
+                if (in_array($order['dir'], ['asc', 'desc'])) {
+                    $this->magentoSearchApi->addSearchCriteria('dir', strtoupper($order['dir']));
+                    $this->magentoSearchApi->addSearchCriteria('orderColumn', $this->requestData['columns'][$order['column']]['data']);
+                    break;
+                }
             }
         }
 
@@ -55,5 +70,18 @@ abstract class DataTableWithMagentoApiAbstractController extends MagentoApiSearc
             ->setCurrentPage($this->requestData['start'] / $this->requestData['length'] + 1);
 
         return $this;
+    }
+
+    /**
+     * @param $key
+     *
+     * @return string
+     * @throws \Exception
+     */
+    protected function getApiUrl($key) {
+        if (!isset(config('izshop')['api'][$key]))
+            throw new \Exception("Can't find api url: " . $key);
+
+        return config('izshop')['api']['base_url'] . config('izshop')['api'][$key];
     }
 }

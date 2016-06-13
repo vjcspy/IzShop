@@ -15,19 +15,19 @@ angular.module('app')
                 responsive: true,
                 ajax: IzAdminConfigService.getConfig('list_product_url', 'admin'),
                 "columns": [
-                    {"data": "id"},
+                    {"data": "entity_id"},
                     {"data": "origin_image"},
                     {"data": "name"},
                     {"data": "type_id"},
                     {"data": "attribute_set_id"},
                     {"data": "sku"},
                     {"data": "price"},
-                    {"data": "stock_items"},
+                    {"data": "qty"},
                     {"data": "visibility"},
                     {"data": "status"}
                 ],
                 "columnDefs": [ //FIXME: HAVE TO FILTER BY CLASS, sẽ chuyển cái này thành code
-                    {className: "id", "targets": [0]},
+                    {className: "entity_id", "targets": [0]},
                     {
                         className: "origin_image",
                         targets: [1],
@@ -61,10 +61,10 @@ angular.module('app')
                         },
                     },
                     {
-                        className: "stock_items",
+                        className: "qty",
                         targets: [7],
                         render: function (data, type, row) {
-                            return parseInt(data.qty);
+                            return parseInt(data);
                         },
                     },
                     {
@@ -94,9 +94,9 @@ angular.module('app')
                         targets: [9],
                         render: function (data, type, row) {
                             if (data == 1)
-                                return 'Bật'
+                                return 'Bật';
                             else
-                                return 'Tắt'
+                                return 'Tắt';
                         }
                     }
                 ],
@@ -110,7 +110,7 @@ angular.module('app')
             },
             filterConfig: [
                 {
-                    columnId: "id",
+                    columnId: "entity_id",
                     name: "Id",
                     show: true,
                     filterType: "text",
@@ -121,6 +121,28 @@ angular.module('app')
                     name: "Tên",
                     show: true,
                     filterType: "text",
+                    filterChecked: false
+                },
+                {
+                    columnId: "type_id",
+                    name: "Kiểu",
+                    show: true,
+                    filterType: "select",
+                    dataSelect: [
+                        {label: 'Không tùy chọn', value: 'simple', id: 'simple', name: 'Không tùy chọn'},
+                        {label: 'Tùy chọn', value: 'configurable', id: 'configurable', name: 'Tùy chọn'}
+                    ],
+                    filterChecked: false
+                },
+                {
+                    columnId: "attribute_set_id",
+                    name: "Kiểu",
+                    show: true,
+                    filterType: "select",
+                    dataSelect: [
+                        {label: 'Không tùy chọn', value: 'simple', id: 'simple', name: 'Không tùy chọn'},
+                        {label: 'Tùy chọn', value: 'configurable', id: 'configurable', name: 'Tùy chọn'}
+                    ],
                     filterChecked: false
                 },
                 {
@@ -135,6 +157,37 @@ angular.module('app')
                     name: "Giá",
                     show: true,
                     filterType: "text",
+                    filterChecked: false
+                },
+                {
+                    columnId: "qty",
+                    name: "Số lượng",
+                    show: true,
+                    filterType: "text",
+                    filterChecked: false
+                },
+                {
+                    columnId: "visibility",
+                    name: "Kiểu hiển thị",
+                    show: true,
+                    filterType: "select",
+                    dataSelect: [
+                        {label: 'Không', value: '1', id: '1', name: 'Không'},
+                        {label: 'Danh mục', value: '2', id: '2', name: 'Danh mục'},
+                        {label: 'Tìm kiếm', value: '3', id: '3', name: 'Tìm kiếm'},
+                        {label: 'Tất cả', value: '4', id: '4', name: 'Danh mục, Tìm kiếm'}
+                    ],
+                    filterChecked: false
+                },
+                {
+                    columnId: "status",
+                    name: "Trạng thái",
+                    show: true,
+                    filterType: "select",
+                    dataSelect: [
+                        {label: 'Bật', value: '1', id: '1', name: 'Bật'},
+                        {label: 'Tắt', value: '0', id: '0', name: 'Tắt'}
+                    ],
                     filterChecked: false
                 }
             ],

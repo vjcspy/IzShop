@@ -3,6 +3,7 @@
 return [
     'name' => 'IzShop',
     'api'  => [
-        'magento_search_product' => "http://mage1.dev/rest/v1/xretail/xproduct"
+        'base_url'               => "http://mage1.dev/",
+        'magento_search_product' => "rest/v1/xretail/product-list"
     ]
 ];
