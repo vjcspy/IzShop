@@ -1,0 +1,12 @@
+/* line 1, ../sass/main.scss */
+.shop-product-list {
+  font-size: 12px;
+}
+/* line 3, ../sass/main.scss */
+.shop-product-list .type_id {
+  width: 50px !important;
+}
+/* line 6, ../sass/main.scss */
+.shop-product-list td {
+  vertical-align: middle !important;
+}
