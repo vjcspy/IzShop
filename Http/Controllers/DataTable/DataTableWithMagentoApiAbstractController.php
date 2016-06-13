@@ -38,6 +38,10 @@ abstract class DataTableWithMagentoApiAbstractController extends MagentoApiSearc
         return Response::json($data);
     }
 
+    public function outputJson($data) {
+        return Response::json($data);
+    }
+
     protected function processSearch() {
 
         // search data

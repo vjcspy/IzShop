@@ -110,7 +110,7 @@ class MagentoSearchApi extends IzObject {
             $this->responseF = json_decode($this->response->getBody(), true);
 
             if (json_last_error() !== JSON_ERROR_NONE) {
-                throw new \Exception("Can't convert to json");
+                throw new \Exception("Can't convert to JSON");
             }
         }
 
