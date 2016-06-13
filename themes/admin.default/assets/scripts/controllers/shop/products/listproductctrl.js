@@ -1,7 +1,6 @@
 angular.module('app')
-    .controller('ListProductCtrl', ['$scope', 'IzAdminConfigService', 'productAttrSet', '_', 'ProductEav',
-        function ($scope, IzAdminConfigService, productAttrSet, _, ProductEav) {
-            var dataCurrency = [];
+    .controller('ListProductCtrl', ['$scope', 'IzAdminConfigService', 'productAttrSet', '_', 'ProductEav', '$state',
+        function ($scope, IzAdminConfigService, productAttrSet, _, ProductEav, $state) {
             /*Config Data table*/
             $scope.dataTable = {
                 article: null,
@@ -200,5 +199,14 @@ angular.module('app')
 
             $scope.configDataTable = {};
             $scope.configDataTable.isSupportNewRecord = true;
+
+            var listener = $scope.$on('add_new_record_izdatatable' + $scope.dataTable.crudId, function (data) {
+                return $state.go('shop_products.crud', {}, {reload: true});
+            });
+            // check de unregister listener, mot diem hay ho cua angular la khi goi lai listener thi no tu unregister
+            $scope.$on('$destroy', function () {
+                // TODO: event $destroy when current view $destroy
+                listener();
+            });
         }
     ]);

@@ -15,3 +15,8 @@
 .shop-product-list td {
   vertical-align: middle !important;
 }
+
+/* line 21, ../sass/main.scss */
+.shop-product-crud .md-tab span {
+  text-transform: none !important;
+}

@@ -1,0 +1,255 @@
+<div class="row shop-product-crud">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button aria-label="Go Back">
+                Quay lại
+            </md-button>
+            <h2>
+                <span></span>
+            </h2>
+            <span flex></span>
+            <md-button class="md-fab md-mini" aria-label="Lưu">
+                Lưu
+            </md-button>
+            <md-button class="md-fab md-mini" aria-label="Xóa">
+                Xóa
+            </md-button>
+        </div>
+    </md-toolbar>
+    <div ng-cloak>
+        <md-content class="md-padding">
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Chung">
+                    <md-content class="md-padding" style="overflow: hidden">
+                        <div>
+                            <form name="userForm">
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Tên Sản Phẩm</label>
+                                        <input ng-model="user.firstName">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Mã Sản Phẩm</label>
+                                        <input ng-model="theMax">
+                                    </md-input-container>
+                                </div>
+
+                                <md-input-container class="md-block">
+                                    <label>Mô Tả</label>
+                                    <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                </md-input-container>
+
+                                <md-input-container class="md-block">
+                                    <label>Mô Tả Ngắn</label>
+                                    <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                </md-input-container>
+
+                                <div layout-gt-xs="row">
+                                    <label>Đặt là sản phẩm mới từ ngày</label>
+                                    <md-datepicker style="margin-top: -10px;" ng-model="user.submissionDate" md-placeholder="Chọn ngày" flex-gt-sm>
+                                    </md-datepicker>
+                                    <label>Đặt là sản phẩm mới đến ngày</label>
+                                    <md-datepicker style="margin-top: -10px;" ng-model="user.submissionDate" md-placeholder="Chọn ngày" flex-gt-sm>
+                                    </md-datepicker>
+                                </div>
+
+                                <div layout-gt-sm="">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>URL đến sản phẩm</label>
+                                        <input ng-model="user.address">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Nước sản xuất</label>
+                                        <md-select ng-model="user.state">
+                                            <md-option value="1">
+                                                Bật
+                                            </md-option>
+                                            <md-option value="0">
+                                                Tắt
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Trạng thái</label>
+                                        <md-select ng-model="user.state">
+                                            <md-option value="1">
+                                                Bật
+                                            </md-option>
+                                            <md-option value="0">
+                                                Tắt
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Hiển thị</label>
+                                        <md-select ng-model="user.state">
+                                            <md-option value="1">
+                                                Bật
+                                            </md-option>
+                                            <md-option value="0">
+                                                Tắt
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Postal Code</label>
+                                        <input name="postalCode" ng-model="user.postalCode" placeholder="12345"
+                                               required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                                        <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                                            <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                                            <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                                                code.
+                                            </div>
+                                            <div ng-message="md-maxlength" class="my-message">
+                                                Don't use the long version silly...we don't need to be that specific...
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                            </form>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Giá">
+                    <md-content class="md-padding" style="overflow: hidden">
+                        <div>
+                            <form name="userForm">
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Giá</label>
+                                        <input ng-model="user.firstName">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Giá Khuyến mãi</label>
+                                        <input ng-model="theMax">
+                                    </md-input-container>
+                                </div>
+
+                                <div layout-gt-xs="row">
+                                    <label>Giá khuyễn mãi từ ngày</label>
+                                    <md-datepicker style="margin-top: -10px;" ng-model="user.submissionDate" md-placeholder="Chọn ngày" flex-gt-sm>
+                                    </md-datepicker>
+                                    <label>Giá khuyến mãi đến ngày</label>
+                                    <md-datepicker style="margin-top: -10px;" ng-model="user.submissionDate" md-placeholder="Chọn ngày" flex-gt-sm>
+                                    </md-datepicker>
+                                </div>
+
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Hiện thị giá thực tế</label>
+                                        <md-select ng-model="user.state">
+                                            <md-option value="1">
+                                                Bật
+                                            </md-option>
+                                            <md-option value="0">
+                                                Tắt
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Giá từ nhà sản xuất</label>
+                                        <input ng-model="theMax">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Kiểu thuế</label>
+                                        <md-select ng-model="user.state">
+                                            <md-option value="1">
+                                                Bật
+                                            </md-option>
+                                            <md-option value="0">
+                                                Tắt
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                            </form>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Ảnh">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Tab Three</h1>
+                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget
+                            congue
+                            risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci
+                            commodo
+                            volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Tồn Kho">
+                    <md-content class="md-padding" style="overflow: hidden">
+                        <div>
+                            <form name="userForm">
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Số Lượng</label>
+                                        <input ng-model="user.firstName">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Đặt trạng thái hàng</label>
+                                        <md-select ng-model="user.state">
+                                            <md-option value="1">
+                                                Còn hàng
+                                            </md-option>
+                                            <md-option value="0">
+                                                Hết hàng
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Khi hết hàng</label>
+                                        <md-select ng-model="user.state">
+                                            <md-option value="1">
+                                                Cho Phép Mua
+                                            </md-option>
+                                            <md-option value="0">
+                                                Không Cho Phép
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>SL tối thiểu khi mua</label>
+                                        <input ng-model="user.firstName">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>SL tối đa khi mua</label>
+                                        <input ng-model="user.firstName">
+                                    </md-input-container>
+                                </div>
+
+                            </form>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Danh Mục">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Tab Three</h1>
+                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget
+                            congue
+                            risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci
+                            commodo
+                            volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Tùy chọn">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Tab Three</h1>
+                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget
+                            congue
+                            risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci
+                            commodo
+                            volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+</div>
+<br>
+<br>

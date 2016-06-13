@@ -42,6 +42,7 @@ angular.module('app')
                     })
                     .state('shop_products.list', {
                         url: '/list',
+                        data: {title: 'List Sản Phẩm', folded: true},
                         templateUrl: "modules/themes/admin.default/assets/views/shop/products/lists.html",
                         controller: 'ListProductCtrl',
                         resolve: {
@@ -53,6 +54,15 @@ angular.module('app')
                             productAttrSet: function (ProductEav) {
                                 return ProductEav.getProductAttrSetFromServer();
                             }
+                        }
+                    })
+                    .state('shop_products.crud', {
+                        url: '/crud',
+                        data: {title: 'Sửa Sản Phẩm', folded: true},
+                        templateUrl: "modules/themes/admin.default/assets/views/shop/products/crud.html",
+                        controller: 'CrudProductCtrl',
+                        resolve: {
+                            deps: load(['modules/themes/admin.default/assets/scripts/controllers/shop/products/crud.js']).deps
                         }
                     })
                 ;
