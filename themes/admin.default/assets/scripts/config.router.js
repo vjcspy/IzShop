@@ -62,7 +62,10 @@ angular.module('app')
                         templateUrl: "modules/themes/admin.default/assets/views/shop/products/crud.html",
                         controller: 'CrudProductCtrl',
                         resolve: {
-                            deps: load(['modules/themes/admin.default/assets/scripts/controllers/shop/products/crud.js']).deps
+                            deps: load(['modules/themes/admin.default/assets/scripts/controllers/shop/products/crud.js']).deps,
+                            categoryNodes: function ($q, Category) {
+                                return Category.getCategoryNodesFromServer()
+                            }
                         }
                     })
                 ;

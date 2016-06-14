@@ -4,7 +4,7 @@
 (function (angular) {
     "use strict";
     angular.module('app')
-        .controller('CrudProductCtrl', ['$scope', function ($scope) {
-
+        .controller('CrudProductCtrl', ['$scope', 'Category', function ($scope, Category) {
+            $scope.Category = Category;
         }]);
 })(angular);

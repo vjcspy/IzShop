@@ -15,10 +15,21 @@ use Modules\IzShop\Http\Controllers\Magento\MagentoApiSearchAbstractController;
 
 abstract class DataTableWithMagentoApiAbstractController extends MagentoApiSearchAbstractController {
 
+    /**
+     * @var
+     */
     protected $dataTableRecord;
 
+    /**
+     * @var
+     */
     protected $requestData;
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return mixed
+     */
     public function getIndex(Request $request) {
         $this->requestData = $request->all();
 
@@ -38,10 +49,10 @@ abstract class DataTableWithMagentoApiAbstractController extends MagentoApiSearc
         return Response::json($data);
     }
 
-    public function outputJson($data) {
-        return Response::json($data);
-    }
-
+    /**
+     * @return $this
+     * @throws \Exception
+     */
     protected function processSearch() {
 
         // search data
@@ -67,6 +78,9 @@ abstract class DataTableWithMagentoApiAbstractController extends MagentoApiSearc
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     protected function processPaging() {
         $this->magentoSearchApi
             ->setForceMode()
@@ -74,18 +88,5 @@ abstract class DataTableWithMagentoApiAbstractController extends MagentoApiSearc
             ->setCurrentPage($this->requestData['start'] / $this->requestData['length'] + 1);
 
         return $this;
-    }
-
-    /**
-     * @param $key
-     *
-     * @return string
-     * @throws \Exception
-     */
-    protected function getApiUrl($key) {
-        if (!isset(config('izshop')['api'][$key]))
-            throw new \Exception("Can't find api url: " . $key);
-
-        return config('izshop')['api']['base_url'] . config('izshop')['api'][$key];
     }
 }

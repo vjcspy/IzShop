@@ -1,6 +1,6 @@
 angular.module('app')
-    .controller('ListProductCtrl', ['$scope', 'IzAdminConfigService', 'productAttrSet', '_', 'ProductEav', '$state',
-        function ($scope, IzAdminConfigService, productAttrSet, _, ProductEav, $state) {
+    .controller('ListProductCtrl', ['$scope', 'IzAdminConfigService', 'productAttrSet', '_', 'ProductEav', '$state', '$log',
+        function ($scope, IzAdminConfigService, productAttrSet, _, ProductEav, $state, $log) {
             /*Config Data table*/
             $scope.dataTable = {
                 article: null,
@@ -201,6 +201,7 @@ angular.module('app')
             $scope.configDataTable.isSupportNewRecord = true;
 
             var listener = $scope.$on('add_new_record_izdatatable' + $scope.dataTable.crudId, function (data) {
+                $log.info('go crud');
                 return $state.go('shop_products.crud', {}, {reload: true});
             });
             // check de unregister listener, mot diem hay ho cua angular la khi goi lai listener thi no tu unregister

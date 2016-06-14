@@ -11,6 +11,7 @@ namespace Modules\IzShop\Http\Controllers\Magento;
 
 use Modules\IzShop\Repositories\MagentoSearchApi;
 use Pingpong\Modules\Routing\Controller;
+use Response;
 
 abstract class MagentoApiSearchAbstractController extends Controller {
 
@@ -28,5 +29,27 @@ abstract class MagentoApiSearchAbstractController extends Controller {
         MagentoSearchApi $magentoSearchApi
     ) {
         $this->magentoSearchApi = $magentoSearchApi;
+    }
+
+    /**
+     * @param $key
+     *
+     * @return string
+     * @throws \Exception
+     */
+    protected function getApiUrl($key) {
+        if (!isset(config('izshop')['api'][$key]))
+            throw new \Exception("Can't find api url: " . $key);
+
+        return config('izshop')['api']['base_url'] . config('izshop')['api'][$key];
+    }
+
+    /**
+     * @param $data
+     *
+     * @return mixed
+     */
+    public function outputJson($data) {
+        return Response::json($data);
     }
 }

@@ -1,0 +1,8 @@
+<div lazy-load="angular-ui-tree" class="shop-category-tree">
+    <div ui-tree id="tree-root" data-drag-enabled="{{canEdit}}">
+        <ol ui-tree-nodes ng-model="categories">
+            <li ng-repeat="node in categories" ui-tree-node
+                ng-include="'modules/themes/admin.default/assets/views/shop/directives/ui-tree-nodes.html'"></li>
+        </ol>
+    </div>
+</div>

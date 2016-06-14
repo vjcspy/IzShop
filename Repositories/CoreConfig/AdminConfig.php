@@ -15,8 +15,9 @@ class AdminConfig implements ConfigInterface {
 
     public function handle() {
         return [
-            'list_product_url' => 'izshop/products',
-            'product_attr_set_url' => 'izshop/products/product-attr-set'
+            'list_product_url'     => 'izshop/products',
+            'product_attr_set_url' => 'izshop/products/product-attr-set',
+            'category_nodes_url'   => 'izshop/category/category-nodes'
         ];
     }
 }
