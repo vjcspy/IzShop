@@ -28,10 +28,11 @@ class ProductController extends DataTableWithMagentoApiAbstractController {
         try {
             $params = $request->all();
 
-            $this->magentoSearchApi->setApiUrl($this->getApiUrl('magento_search_product'));
+            $this->magentoSearchApi->setApiUrl($this->getApiUrl('magento_xproduct'));
 
             $response = $this->magentoSearchApi
-                ->addSearchCriteria('product_id', $params['id'])
+                ->addSearchCriteria('product_id', $params['product_id'])
+                ->authenticate()
                 ->resolve();
 
             $this->setResponseData($response->getItems());

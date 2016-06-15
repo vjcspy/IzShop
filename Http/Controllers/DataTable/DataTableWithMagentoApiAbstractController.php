@@ -31,22 +31,27 @@ abstract class DataTableWithMagentoApiAbstractController extends MagentoApiSearc
      * @return mixed
      */
     public function getIndex(Request $request) {
-        $this->requestData = $request->all();
+        try {
+            $this->requestData = $request->all();
 
-        $this->processSearch()
-             ->processPaging();
+            $this->processSearch()
+                 ->processPaging();
 
-        $response = $this->magentoSearchApi->authenticate()->resolve();
+            $response = $this->magentoSearchApi->authenticate()->resolve();
 
-        $data
-            = [
-            "draw"            => $this->requestData['draw'],
-            "recordsTotal"    => $response->getTotalCount(),
-            "recordsFiltered" => $response->getTotalCount(),
-            "data"            => $response->getItems()
-        ];
+            $data
+                = [
+                "draw"            => $this->requestData['draw'],
+                "recordsTotal"    => $response->getTotalCount(),
+                "recordsFiltered" => $response->getTotalCount(),
+                "data"            => $response->getItems()
+            ];
+            $this->setResponseData($data);
+        } catch (\Exception $e) {
+            $this->setErrorData($e->getMessage());
+        }
 
-        return Response::json($data);
+        return $this->responseJson();
     }
 
     /**
