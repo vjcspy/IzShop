@@ -4,9 +4,10 @@
 (function (angular) {
     "use strict";
     angular.module('app')
-        .controller('CrudProductCtrl', ['$scope', 'Category', 'IzAdminConfigService', 'currentProductData',
-            function ($scope, Category, IzAdminConfigService, currentProductData) {
+        .controller('CrudProductCtrl', ['$scope', 'Category', 'TaxClass', 'IzAdminConfigService', 'currentProductData',
+            function ($scope, Category, TaxClass, IzAdminConfigService, currentProductData) {
                 $scope.Category = Category;
+                $scope.TaxClass = TaxClass;
 
                 $scope.config = {
                     flowConfig: {
@@ -15,7 +16,10 @@
                 };
 
                 if (currentProductData !== false) {
-                 //edit product
+                    //edit product
+                    $scope.product = currentProductData;
                 }
+                else
+                    $scope.product = {};
             }]);
 })(angular);

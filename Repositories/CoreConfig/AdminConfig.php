@@ -16,10 +16,11 @@ class AdminConfig implements ConfigInterface {
     public function handle() {
         return [
             'list_product_url'         => 'izshop/products',
-            'product_by_id_url'   => 'izshop/products/product-by-id',
+            'product_by_id_url'        => 'izshop/products/product-by-id',
             'product_attr_set_url'     => 'izshop/products/product-attr-set',
             'category_nodes_url'       => 'izshop/category/category-nodes',
-            'image_product_upload_url' => 'izshop/products/upload'
+            'image_product_upload_url' => 'izshop/products/upload',
+            'tax_class_url'            => 'izshop/products/tax-class'
         ];
     }
 }

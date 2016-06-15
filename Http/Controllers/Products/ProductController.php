@@ -32,11 +32,29 @@ class ProductController extends DataTableWithMagentoApiAbstractController {
 
             $response = $this->magentoSearchApi
                 ->addSearchCriteria('product_id', $params['product_id'])
+                ->setForceMode(1)
                 ->authenticate()
                 ->resolve();
 
             $this->setResponseData($response->getItems());
 
+        } catch (\Exception $e) {
+            $this->setErrorData($e->getMessage());
+        }
+
+        return $this->responseJson();
+    }
+
+    public function getTaxClass() {
+        try {
+            $this->magentoSearchApi->setApiUrl($this->getApiUrl(''));
+            $response = $this
+                ->magentoSearchApi
+                ->setCurrentPage(1)
+                ->setPageSize(100)
+                ->authenticate()
+                ->resolve();
+            $this->setResponseData($response->getItems());
         } catch (\Exception $e) {
             $this->setErrorData($e->getMessage());
         }
