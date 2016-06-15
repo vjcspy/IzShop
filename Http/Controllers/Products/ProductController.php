@@ -94,4 +94,20 @@ class ProductController extends DataTableWithMagentoApiAbstractController {
 
         var_dump($response->getBody());
     }
+
+    public function getCountryOfManufacture() {
+        try {
+            $this->magentoSearchApi->setApiUrl($this->getApiUrl('magento_country_of_manufacture'));
+            $response = $this->magentoSearchApi
+                ->setForceMode(1)
+                ->authenticate()
+                ->resolve();
+
+            $this->setResponseData($response->getItems());
+        } catch (\Exception $e) {
+            $this->setErrorData($e->getMessage());
+        }
+
+        return $this->responseJson();
+    }
 }

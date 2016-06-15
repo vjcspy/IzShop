@@ -17,7 +17,7 @@
 
                 if (currentProductData !== false) {
                     //edit product
-                    $scope.product = currentProductData;
+                    $scope.product = currentProductData[0];
                 }
                 else
                     $scope.product = {};
