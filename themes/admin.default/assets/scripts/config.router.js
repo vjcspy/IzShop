@@ -58,6 +58,9 @@ angular.module('app')
                     })
                     .state('shop_products.crud', {
                         url: '/crud',
+                        params: {
+                            productId: false
+                        },
                         data: {title: 'Sửa Sản Phẩm', folded: true},
                         templateUrl: "modules/themes/admin.default/assets/views/shop/products/crud.html",
                         controller: 'CrudProductCtrl',
@@ -65,6 +68,14 @@ angular.module('app')
                             deps: load(['modules/themes/admin.default/assets/scripts/controllers/shop/products/crud.js']).deps,
                             categoryNodes: function ($q, Category) {
                                 return Category.getCategoryNodesFromServer()
+                            },
+                            currentProductData: function ($stateParams, Product, $q) {
+                                if ($stateParams.productId !== false) {
+                                    return Product.getProductDataById($stateParams.productId);
+                                }
+                                else {
+                                    return false;
+                                }
                             }
                         }
                     })

@@ -10,6 +10,7 @@
 
         <asset name="shop_service_product_eav" source="scripts/services/shop/productEav.js" dependency="" theme_name="admin.default"/>
         <asset name="shop_service_category" source="scripts/services/shop/category.js" dependency="" theme_name="admin.default"/>
+        <asset name="shop_service_product" source="scripts/services/shop/product.js" dependency="" theme_name="admin.default"/>
 
         <asset name="shop_directive_category_tree" source="scripts/directives/shop/categorytree.js" dependency="" theme_name="admin.default"/>
     </custom_assets>

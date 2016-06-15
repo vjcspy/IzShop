@@ -170,13 +170,43 @@
                     </md-content>
                 </md-tab>
                 <md-tab label="Ảnh">
-                    <md-content class="md-padding">
-                        <h1 class="md-display-2">Tab Three</h1>
-                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget
-                            congue
-                            risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci
-                            commodo
-                            volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                    <md-content class="md-padding" flow-init="config.flowConfig"
+                                flow-files-submitted="$flow.upload()"
+                                flow-file-success="$file.msg = $message"
+                                flow-prevent-drop
+                                flow-drag-enter="style={border: '5px solid green'}">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 drop-image">
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <md-button class="md-raised" flow-btn>Upload Ảnh</md-button>
+                                    <md-button class="md-raised" flow-btn flow-directory ng-show="$flow.supportDirectory">Upload Thư Mục</md-button>
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <div class="alert" flow-drop flow-drag-enter="class='alert-success'" flow-drag-leave="class=''" ng-class="class">
+                                        Hoặc kéo thả ảnh vào đây
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div ng-repeat="file in $flow.files" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 image-box">
+                                <span class="title">{{file.name}}</span>
+                                <div class="thumbnail">
+                                    <img flow-img="file">
+                                </div>
+                                <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+                                    <div class="progress bg-light dker" ng-class="{active: $flow.isUploading()}">
+                                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
+                                             ng-style="{ 'width': file.progress() * 100 + '%' }"></div>
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <a class="btn btn-xs btn-danger" ng-click="file.cancel()">
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </md-content>
                 </md-tab>
                 <md-tab label="Tồn Kho">
@@ -236,7 +266,7 @@
                         </div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Tùy chọn">
+                <md-tab label="Tùy chọn" ng-if="false">
                     <md-content class="md-padding">
                         <h1 class="md-display-2">Tab Three</h1>
                         <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget

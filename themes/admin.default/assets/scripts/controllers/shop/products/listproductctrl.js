@@ -1,6 +1,6 @@
 angular.module('app')
-    .controller('ListProductCtrl', ['$scope', 'IzAdminConfigService', 'productAttrSet', '_', 'ProductEav', '$state', '$log',
-        function ($scope, IzAdminConfigService, productAttrSet, _, ProductEav, $state, $log) {
+    .controller('ListProductCtrl', ['$scope', 'IzAdminConfigService', 'productAttrSet', '_', 'ProductEav', '$state', '$log', '$compile',
+        function ($scope, IzAdminConfigService, productAttrSet, _, ProductEav, $state, $log, $compile) {
             /*Config Data table*/
             $scope.dataTable = {
                 article: null,
@@ -23,7 +23,8 @@ angular.module('app')
                         {"data": "price"},
                         {"data": "qty"},
                         {"data": "visibility"},
-                        {"data": "status"}
+                        {"data": "status"},
+                        {"data": "entity_id"}
                     ],
                     "columnDefs": [ //FIXME: HAVE TO FILTER BY CLASS, sẽ chuyển cái này thành code
                         {className: "entity_id", "targets": [0]},
@@ -104,6 +105,13 @@ angular.module('app')
                                     return 'Bật';
                                 else
                                     return 'Tắt';
+                            }
+                        },
+                        {
+                            className: "action",
+                            targets: [10],
+                            render: function (data, type, row) {
+                                return getButtonEdit();
                             }
                         }
                     ],
@@ -200,14 +208,28 @@ angular.module('app')
             $scope.configDataTable = {};
             $scope.configDataTable.isSupportNewRecord = true;
 
-            var listener = $scope.$on('add_new_record_izdatatable' + $scope.dataTable.crudId, function (data) {
+            var listenerCreateProduct = $scope.$on('add_new_record_izdatatable' + $scope.dataTable.crudId, function (data) {
                 $log.info('go crud');
-                return $state.go('shop_products.crud', {}, {reload: true});
+                return $state.go('shop_products.crud', {productId: false}, {reload: true});
+            });
+            var listenerEditProduct = $scope.$on('click_edit_action' + $scope.dataTable.crudId, function (event, data) {
+                console.log(data);
+                return $state.go('shop_products.crud', {productId: data}, {reload: true});
             });
             // check de unregister listener, mot diem hay ho cua angular la khi goi lai listener thi no tu unregister
             $scope.$on('$destroy', function () {
                 // TODO: event $destroy when current view $destroy
-                listener();
+                listenerCreateProduct();
+                listenerEditProduct();
             });
+            function getButtonEdit() {
+                var html = '<div><md-button class="md-icon-button md-primary" aria-label="Settings"><i' +
+                    ' class="fa' +
+                    ' fa-pencil"' +
+                    ' aria-hidden="true"></i></md-button></div>';
+
+                var btElem = angular.element(html);
+                return ($compile(btElem)($scope)[0]).innerHTML;
+            }
         }
     ]);

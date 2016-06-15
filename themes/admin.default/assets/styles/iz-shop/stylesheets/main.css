@@ -15,47 +15,65 @@
 .shop-product-list td {
   vertical-align: middle !important;
 }
+/* line 16, ../sass/main.scss */
+.shop-product-list td.action {
+  cursor: pointer;
+}
 
-/* line 21, ../sass/main.scss */
+/* line 24, ../sass/main.scss */
 .shop-product-crud .md-tab span {
   text-transform: none !important;
 }
-/* line 25, ../sass/main.scss */
+/* line 28, ../sass/main.scss */
 .shop-product-crud .shop-category-tree {
   /* --- Tree --- */
 }
-/* line 26, ../sass/main.scss */
+/* line 29, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .btn {
   margin-right: 8px;
 }
-/* line 30, ../sass/main.scss */
+/* line 33, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .angular-ui-tree-handle {
   background: #f8faff;
   border: 1px solid #dae2ea;
   color: #7c9eb2;
   padding: 10px 10px;
 }
-/* line 35, ../sass/main.scss */
+/* line 38, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .angular-ui-tree-handle:hover {
   color: #438eb9;
   background: #f4f6f7;
   border-color: #dce2e8;
 }
-/* line 60, ../sass/main.scss */
+/* line 63, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .tree-node {
   border: 1px solid #dae2ea;
   background: #f8faff;
   color: #7c9eb2;
   padding-bottom: 0;
 }
-/* line 71, ../sass/main.scss */
+/* line 74, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .tree-node-content {
   margin: 10px;
 }
-/* line 74, ../sass/main.scss */
+/* line 77, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .tree-handle {
   padding: 10px;
   background: #428bca;
   color: #FFF;
   margin-right: 10px;
+}
+/* line 93, ../sass/main.scss */
+.shop-product-crud .drop-image {
+  border: 2px #f1f1f1 dashed;
+  border-radius: 5px;
+  padding: 15px 15px 0;
+}
+/* line 98, ../sass/main.scss */
+.shop-product-crud .image-box {
+  border: 2px #f1f1f1 solid;
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 13px;
+  font-weight: 500;
 }
