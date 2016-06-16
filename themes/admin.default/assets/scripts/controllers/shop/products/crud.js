@@ -18,7 +18,6 @@
                 if (currentProductData !== false) {
                     //edit product
                     $scope.product = currentProductData[0];
-                    console.log($scope.product);
                 }
                 else
                     $scope.product = {};
