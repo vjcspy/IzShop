@@ -27,8 +27,10 @@ class ProductController extends DataTableWithMagentoApiAbstractController {
     public function getProductById(Request $request) {
         try {
             $params = $request->all();
+            if (!isset($params['product_id']) || !$params['product_id'])
+                throw new \Exception('Must have param product_id');
 
-            $this->magentoSearchApi->setApiUrl($this->getApiUrl('magento_xproduct'));
+            $this->magentoSearchApi->setApiUrl($this->getApiUrl('magento_product_detail'));
 
             $response = $this->magentoSearchApi
                 ->addSearchCriteria('product_id', $params['product_id'])
