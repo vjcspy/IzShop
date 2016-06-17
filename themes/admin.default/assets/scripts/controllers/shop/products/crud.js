@@ -4,10 +4,11 @@
 (function (angular) {
     "use strict";
     angular.module('app')
-        .controller('CrudProductCtrl', ['$scope', 'Category', 'TaxClass', 'IzAdminConfigService', 'currentProductData',
-            function ($scope, Category, TaxClass, IzAdminConfigService, currentProductData) {
+        .controller('CrudProductCtrl', ['$scope', 'Category', 'TaxClass', 'IzAdminConfigService', 'currentProductData', '$state', 'AnotherData',
+            function ($scope, Category, TaxClass, IzAdminConfigService, currentProductData, $state, AnotherData) {
                 $scope.Category = Category;
                 $scope.TaxClass = TaxClass;
+                $scope.AnotherData = AnotherData;
 
                 $scope.config = {
                     flowConfig: {
@@ -15,6 +16,9 @@
                     }
                 };
 
+                $scope.countries = AnotherData.getCountryOfManufacture();
+                console.log($scope.countries);
+                
                 if (currentProductData !== false) {
                     //edit product
                     $scope.product = currentProductData[0];

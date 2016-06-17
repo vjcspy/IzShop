@@ -54,7 +54,7 @@ abstract class MagentoApiSearchAbstractController extends Controller {
      */
     protected function getApiUrl($key) {
         if (!isset(config('izshop')['api'][$key]))
-            throw new \Exception("Can't find api url: " . $key);
+            throw new \Exception("Can't find API URL: " . $key);
 
         return config('izshop')['api']['base_url'] . config('izshop')['api'][$key];
     }

@@ -1,7 +1,7 @@
 <div class="row shop-product-crud">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <md-button aria-label="Go Back">
+            <md-button aria-label="Go Back" ng-click="goBack()">
                 Quay lại
             </md-button>
             <h2>
@@ -63,11 +63,8 @@
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Nước sản xuất</label>
                                         <md-select ng-model="product.country_of_manufacture">
-                                            <md-option value="1">
-                                                Bật
-                                            </md-option>
-                                            <md-option value="0">
-                                                Tắt
+                                            <md-option ng-repeat="country in countries" value="{{country.value}}">
+                                                {{country['label']}}
                                             </md-option>
                                         </md-select>
                                     </md-input-container>
@@ -89,10 +86,16 @@
                                         <label>Hiển thị</label>
                                         <md-select ng-model="product.visibility">
                                             <md-option value="1">
-                                                Bật
+                                                Ẩn
                                             </md-option>
-                                            <md-option value="0">
-                                                Tắt
+                                            <md-option value="2">
+                                                Danh mục
+                                            </md-option>
+                                            <md-option value="3">
+                                                Tìm kiếm
+                                            </md-option>
+                                            <md-option value="4">
+                                                Tất cả
                                             </md-option>
                                         </md-select>
                                     </md-input-container>
@@ -131,7 +134,7 @@
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Kiểu thuế</label>
                                         <md-select ng-model="product.tax_class_id">
-                                            <md-option ng-repeat="taxClass in TaxClass.getProductTaxClass()" value="taxClass.class_id">
+                                            <md-option ng-repeat="taxClass in TaxClass.getProductTaxClass()" value="{{taxClass.class_id}}">
                                                 {{taxClass.class_name}}
                                             </md-option>
                                         </md-select>

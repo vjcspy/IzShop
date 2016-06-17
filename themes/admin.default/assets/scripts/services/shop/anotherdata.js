@@ -8,19 +8,16 @@
     angular.module('app')
         .service('AnotherData', ['$q', '$http', 'IzAdminConfigService', '$timeout', function ($q, $http, IzAdminConfigService, $timeout) {
             var countryOfManufacture = false;
-            this.getCountryOfManufacture = function () {
+            this.getCountryOfManufactureFromSv = function () {
                 var defer = $q.defer();
-
-                if (countryOfManufacture == false) {
-                    $http.get(IzAdminConfigService.getConfig('magento_country_of_manufacture', 'admin')).then(function (res) {
-                        return defer.resolve(res.data);
-                    });
-                } else {
-                    $timeout(function () {
-                        return defer.resolve(countryOfManufacture);
-                    }, 500);
-                }
+                $http.get(IzAdminConfigService.getConfig('magento_country_of_manufacture', 'admin')).then(function (res) {
+                    countryOfManufacture = res.data;
+                    return defer.resolve(res.data);
+                });
                 return defer.promise;
+            };
+            this.getCountryOfManufacture = function () {
+                return countryOfManufacture;
             }
         }]);
 })(angular);

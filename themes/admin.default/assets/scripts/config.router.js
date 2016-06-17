@@ -37,6 +37,15 @@ angular.module('app')
                                         return defer.resolve(true);
                                 });
                                 return defer.promise;
+                            },
+                            country: function (AnotherData) {
+                                return AnotherData.getCountryOfManufactureFromSv();
+                            },
+                            taxclass: function (TaxClass) {
+                                return TaxClass.getTaxClassFromServer();
+                            },
+                            productAttrSet: function (ProductEav) {
+                                return ProductEav.getProductAttrSetFromServer();
                             }
                         }
                     })
@@ -50,17 +59,11 @@ angular.module('app')
                                 [
                                     'angular-material-data-table',
                                     'modules/themes/admin.default/assets/scripts/controllers/shop/products/listproductctrl.js'
-                                ]).deps,
-                            productAttrSet: function (ProductEav) {
-                                return ProductEav.getProductAttrSetFromServer();
-                            }
+                                ]).deps
                         }
                     })
                     .state('shop_products.crud', {
-                        url: '/crud',
-                        params: {
-                            productId: false
-                        },
+                        url: '/crud/{productId}',
                         data: {title: 'Sửa Sản Phẩm', folded: true},
                         templateUrl: "modules/themes/admin.default/assets/views/shop/products/crud.html",
                         controller: 'CrudProductCtrl',

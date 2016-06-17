@@ -1,7 +1,8 @@
 angular.module('app')
     .controller('ListProductCtrl', ['$scope', 'IzAdminConfigService', 'productAttrSet', '_', 'ProductEav', '$state', '$log', '$compile',
         function ($scope, IzAdminConfigService, productAttrSet, _, ProductEav, $state, $log, $compile) {
-            /*Config Data table*/
+
+            /* ----------------Config Data table---------------- */
             $scope.dataTable = {
                 article: null,
                 crudId: 'product_crud', // dung de biet duoc thang nao muon them moi, boi vi nhieu thang cung dung directive nay
@@ -205,23 +206,6 @@ angular.module('app')
                 ]
             };
 
-            $scope.configDataTable = {};
-            $scope.configDataTable.isSupportNewRecord = true;
-
-            var listenerCreateProduct = $scope.$on('add_new_record_izdatatable' + $scope.dataTable.crudId, function (data) {
-                $log.info('go crud');
-                return $state.go('shop_products.crud', {productId: false}, {reload: true});
-            });
-            var listenerEditProduct = $scope.$on('click_edit_action' + $scope.dataTable.crudId, function (event, data) {
-                console.log(data);
-                return $state.go('shop_products.crud', {productId: data}, {reload: true});
-            });
-            // check de unregister listener, mot diem hay ho cua angular la khi goi lai listener thi no tu unregister
-            $scope.$on('$destroy', function () {
-                // TODO: event $destroy when current view $destroy
-                listenerCreateProduct();
-                listenerEditProduct();
-            });
             function getButtonEdit() {
                 var html = '<div><md-button class="md-icon-button md-primary" aria-label="Settings"><i' +
                     ' class="fa' +
@@ -231,5 +215,22 @@ angular.module('app')
                 var btElem = angular.element(html);
                 return ($compile(btElem)($scope)[0]).innerHTML;
             }
+
+            $scope.configDataTable = {};
+            $scope.configDataTable.isSupportNewRecord = true;
+
+            /* ----------------Communicate with view---------------- */
+            var listenerCreateProduct = $scope.$on('add_new_record_izdatatable' + $scope.dataTable.crudId, function (data) {
+                return $state.go('shop_products.crud', {productId: false}, {reload: true});
+            });
+            var listenerEditProduct = $scope.$on('click_edit_action' + $scope.dataTable.crudId, function (event, data) {
+                return $state.go('shop_products.crud', {productId: data}, {reload: true});
+            });
+            // check de unregister listener, mot diem hay ho cua angular la khi goi lai listener thi no tu unregister
+            $scope.$on('$destroy', function () {
+                //event $destroy when current view $destroy
+                listenerCreateProduct();
+                listenerEditProduct();
+            });
         }
     ]);

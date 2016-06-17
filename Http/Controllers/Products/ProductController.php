@@ -49,7 +49,7 @@ class ProductController extends DataTableWithMagentoApiAbstractController {
 
     public function getTaxClass() {
         try {
-            $this->magentoSearchApi->setApiUrl($this->getApiUrl(''));
+            $this->magentoSearchApi->setApiUrl($this->getApiUrl('magento_xtax-class'));
             $response = $this
                 ->magentoSearchApi
                 ->setCurrentPage(1)
