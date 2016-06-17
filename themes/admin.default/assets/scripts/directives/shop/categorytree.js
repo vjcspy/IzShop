@@ -1,18 +1,29 @@
 (function (angular) {
     "use strict";
     angular.module('app')
-        .directive('categoryTree', function () {
+        .directive('categoryTree', ['_', function (_) {
             return {
                 restrict: "EAC",
                 scope: {
                     categories: '=',
-                    canEdit: '@'
+                    canEdit: '@',
+                    categoryData: '=' // Product category selected
                 },
                 templateUrl: "modules/themes/admin.default/assets/views/shop/directives/ui-tree.html",
                 controller: ['$scope', function ($scope) {
+                    console.log($scope.categoryData);
+                    console.log($scope.categories);
                     $scope.cateData = {};
                     $scope.cateData.canEdit = $scope.canEdit == 'true';
-                    $scope.cateData.collapsed = true;
+                    $scope.cateData.cateSelected = {};
+
+                    var initCategorySelected = function () {
+                        _.forEach($scope.categoryData, function (val) {
+                            $scope.cateData.cateSelected[val] = true;
+                        });
+                    };
+                    initCategorySelected();
+
                     $scope.remove = function (scope) {
                         scope.remove();
                     };
@@ -43,9 +54,17 @@
                         $scope.$broadcast('angular-ui-tree:expand-all');
                     };
 
-                    $scope.collapseAll();
+                    $scope.selectCat = function (id) {
+                        if ($scope.cateData.cateSelected[id] == true)
+                            $scope.categoryData.push(id);
+                        else
+                            $scope.categoryData = _.remove($scope.categoryData, function (n) {
+                                return n == id;
+                            });
+
+                    }
 
                 }]
             };
-        });
+        }]);
 })(angular);

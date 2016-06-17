@@ -2,7 +2,7 @@
     <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)">
         <span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed,'glyphicon-chevron-down': !collapsed}"></span>
     </a>
-    <md-checkbox aria-label="node.name">
+    <md-checkbox aria-label="node.name" ng-model="cateData.cateSelected[node.entity_id]" ng-change="selectCat(node.entity_id)">
         {{node.name}}
     </md-checkbox>
     <a ng-if="node.level !== '0' && cateData.canEdit == true" class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)">
