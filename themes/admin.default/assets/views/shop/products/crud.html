@@ -36,12 +36,12 @@
 
                                 <md-input-container class="md-block">
                                     <label>Mô Tả</label>
-                                    <textarea ng-model="product.description" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                    <textarea ng-model="product.description" md-maxlength="1500" rows="5" md-select-on-focus></textarea>
                                 </md-input-container>
 
                                 <md-input-container class="md-block">
                                     <label>Mô Tả Ngắn</label>
-                                    <textarea ng-model="product.short_description" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                    <textarea ng-model="product.short_description" md-maxlength="1500" rows="5" md-select-on-focus></textarea>
                                 </md-input-container>
 
                                 <div layout-gt-sm="row" class="date-new-from-to">
@@ -63,7 +63,7 @@
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Nước sản xuất</label>
                                         <md-select ng-model="product.country_of_manufacture">
-                                            <md-option ng-repeat="country in countries" value="{{country.value}}">
+                                            <md-option ng-repeat="country in AnotherData.getCountryOfManufacture()" value="{{country.value}}">
                                                 {{country['label']}}
                                             </md-option>
                                         </md-select>
@@ -194,7 +194,7 @@
                         </div>
                         <div class="row">
                             <div ng-repeat="file in $flow.files" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 image-box">
-                                <span class="title">{{file.name}}</span>
+                                <!--<span class="title">{{file.name}}</span>-->
                                 <div class="thumbnail">
                                     <img flow-img="file">
                                 </div>
@@ -206,6 +206,17 @@
                                 </div>
                                 <div class="btn-group">
                                     <a class="btn btn-xs btn-danger" ng-click="file.cancel()">
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                            <div ng-repeat="image in product.image_gallery" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 image-box">
+                                <span class="title">{{file.label}}</span>
+                                <div class="thumbnail">
+                                    <img src="{{image.url}}">
+                                </div>
+                                <div class="btn-group">
+                                    <a class="btn btn-xs btn-danger" ng-click="">
                                         Remove
                                     </a>
                                 </div>

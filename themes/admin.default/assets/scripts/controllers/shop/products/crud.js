@@ -1,6 +1,3 @@
-/**
- * Created by vjcspy on 13/06/2016.
- */
 (function (angular) {
     "use strict";
     angular.module('app')
@@ -16,12 +13,10 @@
                     }
                 };
 
-                $scope.countries = AnotherData.getCountryOfManufacture();
-                console.log($scope.countries);
-                
                 if (currentProductData !== false) {
                     //edit product
                     $scope.product = currentProductData[0];
+                    console.log($scope.product);
                 }
                 else
                     $scope.product = {};
