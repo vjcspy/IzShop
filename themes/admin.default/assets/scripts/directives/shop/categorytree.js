@@ -11,8 +11,6 @@
                 },
                 templateUrl: "modules/themes/admin.default/assets/views/shop/directives/ui-tree.html",
                 controller: ['$scope', function ($scope) {
-                    console.log($scope.categoryData);
-                    console.log($scope.categories);
                     $scope.cateData = {};
                     $scope.cateData.canEdit = $scope.canEdit == 'true';
                     $scope.cateData.cateSelected = {};
@@ -55,13 +53,14 @@
                     };
 
                     $scope.selectCat = function (id) {
-                        if ($scope.cateData.cateSelected[id] == true)
-                            $scope.categoryData.push(id);
+                        if ($scope.cateData.cateSelected[id] == true) {
+                            if (_.indexOf($scope.categoryData, id) == -1)
+                                $scope.categoryData.push(id);
+                        }
                         else
                             $scope.categoryData = _.remove($scope.categoryData, function (n) {
-                                return n == id;
+                                return n != id;
                             });
-
                     }
 
                 }]

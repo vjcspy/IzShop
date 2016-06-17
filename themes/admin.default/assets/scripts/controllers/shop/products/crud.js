@@ -20,5 +20,9 @@
                 }
                 else
                     $scope.product = {};
+
+                $scope.saveProduct = function () {
+                    console.log($scope.product);
+                }
             }]);
 })(angular);
