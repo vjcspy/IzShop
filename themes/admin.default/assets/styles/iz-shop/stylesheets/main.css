@@ -24,61 +24,67 @@
 .shop-product-crud .date-new-from-to {
   padding-bottom: 15px;
   margin-top: -10px;
+  line-height: 34px;
 }
-/* line 28, ../sass/main.scss */
+/* line 29, ../sass/main.scss */
 .shop-product-crud .md-tab span {
   text-transform: none !important;
 }
-/* line 32, ../sass/main.scss */
+/* line 33, ../sass/main.scss */
 .shop-product-crud .shop-category-tree {
   /* --- Tree --- */
 }
-/* line 33, ../sass/main.scss */
+/* line 34, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .btn {
   margin-right: 8px;
 }
-/* line 37, ../sass/main.scss */
+/* line 38, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .angular-ui-tree-handle {
   background: #f8faff;
   border: 1px solid #dae2ea;
   color: #7c9eb2;
   padding: 10px 10px;
 }
-/* line 42, ../sass/main.scss */
+/* line 43, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .angular-ui-tree-handle:hover {
   color: #438eb9;
   background: #f4f6f7;
   border-color: #dce2e8;
 }
-/* line 67, ../sass/main.scss */
+/* line 68, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .tree-node {
   border: 1px solid #dae2ea;
   background: #f8faff;
   color: #7c9eb2;
   padding-bottom: 0;
 }
-/* line 78, ../sass/main.scss */
+/* line 79, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .tree-node-content {
   margin: 10px;
 }
-/* line 81, ../sass/main.scss */
+/* line 82, ../sass/main.scss */
 .shop-product-crud .shop-category-tree .tree-handle {
   padding: 10px;
   background: #428bca;
   color: #FFF;
   margin-right: 10px;
 }
-/* line 97, ../sass/main.scss */
+/* line 98, ../sass/main.scss */
 .shop-product-crud .drop-image {
   border: 2px #f1f1f1 dashed;
   border-radius: 5px;
   padding: 15px 15px 0;
 }
-/* line 102, ../sass/main.scss */
+/* line 103, ../sass/main.scss */
 .shop-product-crud .image-box {
   border: 2px #f1f1f1 solid;
-  margin-top: 10px;
+  margin: 7px;
   padding: 5px;
   font-size: 13px;
   font-weight: 500;
+}
+/* line 109, ../sass/main.scss */
+.shop-product-crud .image-box img {
+  width: 100px !important;
+  height: 100px !important;
 }

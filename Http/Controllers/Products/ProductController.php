@@ -40,7 +40,8 @@ class ProductController extends DataTableWithMagentoApiAbstractController {
 
             $this->setResponseData($response->getItems());
 
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             $this->setErrorData($e->getMessage());
         }
 
@@ -57,7 +58,8 @@ class ProductController extends DataTableWithMagentoApiAbstractController {
                 ->authenticate()
                 ->resolve();
             $this->setResponseData($response->getItems());
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             $this->setErrorData($e->getMessage());
         }
 
@@ -106,7 +108,30 @@ class ProductController extends DataTableWithMagentoApiAbstractController {
                 ->resolve();
 
             $this->setResponseData($response->getItems());
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
+            $this->setErrorData($e->getMessage());
+        }
+
+        return $this->responseJson();
+    }
+
+    public function postSaveProduct(Request $request) {
+        $data = $this->getRequestData($request);
+        try {
+            $client = $this->magentoSearchApi->getClient();
+            $r      = $client->request(
+                'POST',
+                $this->getApiUrl('magento_save_product'),
+                [
+                    'form_params'    => $data,
+                    'headers' => [
+                        'Black-Hole' => 'demo'
+                    ]
+                ]);
+            $this->setResponseData($r->getBody());
+        }
+        catch (\Exception $e) {
             $this->setErrorData($e->getMessage());
         }
 

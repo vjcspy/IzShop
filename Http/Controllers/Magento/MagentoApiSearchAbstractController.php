@@ -12,6 +12,7 @@ namespace Modules\IzShop\Http\Controllers\Magento;
 use Modules\IzShop\Repositories\MagentoSearchApi;
 use Pingpong\Modules\Routing\Controller;
 use Response;
+use Illuminate\Http\Request;
 
 abstract class MagentoApiSearchAbstractController extends Controller {
 
@@ -99,12 +100,13 @@ abstract class MagentoApiSearchAbstractController extends Controller {
     /**
      * Tra ve request data
      *
-     * @param Request $reqest
+     * @param \Illuminate\Http\Request $request
      *
      * @return array
+     *
      */
-    public function getRequestData(Request $reqest) {
-        return $reqest->all();
+    public function getRequestData(Request $request) {
+        return $request->all();
     }
 
     /**

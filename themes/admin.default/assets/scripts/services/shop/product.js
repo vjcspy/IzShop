@@ -1,6 +1,3 @@
-/**
- * Created by vjcspy on 15/06/2016.
- */
 (function (angular) {
     "use strict";
     angular.module('app')
@@ -14,5 +11,11 @@
 
                 return defer.promise;
             };
+
+            this.saveProductToServer = function (productData) {
+                var url = IzAdminConfigService.getConfig('product_save_url', 'admin');
+
+                return $http.post(url, productData);
+            }
         }]);
 })(angular);

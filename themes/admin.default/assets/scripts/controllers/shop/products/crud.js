@@ -1,8 +1,8 @@
 (function (angular) {
     "use strict";
     angular.module('app')
-        .controller('CrudProductCtrl', ['$scope', 'Category', 'TaxClass', 'IzAdminConfigService', 'currentProductData', '$state', 'AnotherData',
-            function ($scope, Category, TaxClass, IzAdminConfigService, currentProductData, $state, AnotherData) {
+        .controller('CrudProductCtrl', ['$scope', 'Category', 'TaxClass', 'IzAdminConfigService', 'currentProductData', '$state', 'AnotherData', 'Product', 'toastr',
+            function ($scope, Category, TaxClass, IzAdminConfigService, currentProductData, $state, AnotherData, Product, toastr) {
                 $scope.Category = Category;
                 $scope.TaxClass = TaxClass;
                 $scope.AnotherData = AnotherData;
@@ -13,16 +13,15 @@
                     }
                 };
 
-                if (currentProductData !== false) {
-                    //edit product
+                if (currentProductData !== false)
                     $scope.product = currentProductData[0];
-                    console.log($scope.product);
-                }
                 else
                     $scope.product = {};
 
                 $scope.saveProduct = function () {
-                    console.log($scope.product);
+                    Product.saveProductToServer($scope.product).then(function (res) {
+                        toastr.success('Luu thanh cong');
+                    });
                 }
             }]);
 })(angular);
