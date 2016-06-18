@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Modules\IzCore\Http\Controllers\ImageUpload;
 use Modules\IzShop\Http\Controllers\DataTable\DataTableWithMagentoApiAbstractController;
 use GuzzleHttp\Client;
+use Carbon\Carbon;
 
 class ProductController extends DataTableWithMagentoApiAbstractController {
 
@@ -38,7 +39,12 @@ class ProductController extends DataTableWithMagentoApiAbstractController {
                 ->authenticate()
                 ->resolve();
 
-            $this->setResponseData($response->getItems());
+            $product = $response->getItems();
+
+            /*Check date-time*/
+            $product = $this->checkDateTimeProductData($product);
+
+            $this->setResponseData($product);
 
         }
         catch (\Exception $e) {
@@ -118,14 +124,20 @@ class ProductController extends DataTableWithMagentoApiAbstractController {
 
     public function postSaveProduct(Request $request) {
         $data = $this->getRequestData($request);
+        if (isset($data['categories']) && is_array($data['categories']) && count($data['categories']) > 0) {
+            $data['category_ids'] = '';
+            foreach ($data['categories'] as $category) {
+                $data['category_ids'] .= "," . $category;
+            }
+        }
         try {
             $client = $this->magentoSearchApi->getClient();
             $r      = $client->request(
                 'POST',
                 $this->getApiUrl('magento_save_product'),
                 [
-                    'form_params'    => $data,
-                    'headers' => [
+                    'form_params' => $data,
+                    'headers'     => [
                         'Black-Hole' => 'demo'
                     ]
                 ]);
@@ -136,5 +148,27 @@ class ProductController extends DataTableWithMagentoApiAbstractController {
         }
 
         return $this->responseJson();
+    }
+
+    private function checkDateTimeProductData($product) {
+        $product = $product[0];
+        if ($product['news_from_date'] != '') {
+            $dt                        = Carbon::parse($product['news_from_date']);
+            $product['news_from_date'] = $dt->format('m/d/Y');
+        }
+        if ($product['news_to_date'] != '') {
+            $dt                      = Carbon::parse($product['news_to_date']);
+            $product['news_to_date'] = $dt->format('m/d/Y');
+        }
+        if ($product['special_from_date'] != '') {
+            $dt                           = Carbon::parse($product['special_from_date']);
+            $product['special_from_date'] = $dt->format('m/d/Y');
+        }
+        if ($product['special_to_date'] != '') {
+            $dt                         = Carbon::parse($product['special_to_date']);
+            $product['special_to_date'] = $dt->format('m/d/Y');
+        }
+
+        return $product;
     }
 }

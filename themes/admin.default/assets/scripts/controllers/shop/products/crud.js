@@ -10,11 +10,23 @@
                 $scope.config = {
                     flowConfig: {
                         target: IzAdminConfigService.getConfig('image_product_upload_url', 'admin')
+                    },
+                    datePicker: {
+                        autoApply: true,
+                        singleDatePicker: true,
+                        showDropdowns: true,
+                        locale: {
+                            format: 'MM/DD/YYYY',
+                            cancelLabel: 'Xóa'
+                        }, 
+                        autoUpdateInput: false
                     }
                 };
 
-                if (currentProductData !== false)
-                    $scope.product = currentProductData[0];
+                if (currentProductData !== false) {
+                    $scope.product = currentProductData;
+                    console.log($scope.product);
+                }
                 else
                     $scope.product = {};
 
