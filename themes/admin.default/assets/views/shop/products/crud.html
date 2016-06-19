@@ -206,13 +206,14 @@
                                     </a>
                                 </div>
                             </div>
-                            <div ng-repeat="image in product.image_gallery" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 image-box">
+                            <div ng-repeat="image in product.image_gallery" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 image-box"
+                                 ng-show="image.removed !=1">
                                 <span class="title">{{file.label}}</span>
                                 <div class="thumbnail">
                                     <img src="{{image.url}}">
                                 </div>
                                 <div class="btn-group">
-                                    <a class="btn btn-xs btn-danger" ng-click="">
+                                    <a class="btn btn-xs btn-danger" ng-click="image.removed = 1">
                                         Remove
                                     </a>
                                 </div>

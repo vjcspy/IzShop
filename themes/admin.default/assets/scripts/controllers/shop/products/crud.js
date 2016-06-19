@@ -25,7 +25,6 @@
 
                 if (currentProductData !== false) {
                     $scope.product = currentProductData;
-                    console.log($scope.product);
                 }
                 else
                     $scope.product = {};
