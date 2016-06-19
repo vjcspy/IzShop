@@ -118,6 +118,13 @@ class MagentoSearchApi extends IzObject {
     }
 
     /**
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function getOriginResponse() {
+        return $this->response;
+    }
+
+    /**
      * @return array
      * @throws \Exception
      */

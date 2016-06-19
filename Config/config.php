@@ -11,6 +11,7 @@ return [
         'magento_category_nodes'         => "rest/v1/xretail/categories",
         'magento_xtax-class'             => "rest/v1/xretail/xtax-class",
         'magento_country_of_manufacture' => "rest/v1/xretail/country-of-manufacture",
-        'magento_save_product'           => "rest/v1/xretail/product-save"
+        'magento_save_product'           => "rest/v1/xretail/product-save",
+        'magento_save_product_image'     => "rest/v1/xretail/product-save-image"
     ]
 ];

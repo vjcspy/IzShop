@@ -22,7 +22,9 @@ class AdminConfig implements ConfigInterface {
             'image_product_upload_url'       => 'izshop/products/upload',
             'tax_class_url'                  => 'izshop/products/tax-class',
             'magento_country_of_manufacture' => 'izshop/products/country-of-manufacture',
-            'product_save_url'               => 'izshop/products/save-product'
+            'product_save_url'               => 'izshop/products/save-product',
+            'product_save_image_url'               => 'izshop/products/save-product-image',
+
         ];
     }
 }

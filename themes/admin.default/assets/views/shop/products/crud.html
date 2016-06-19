@@ -172,7 +172,7 @@
                 <md-tab label="Ảnh">
                     <md-content class="md-padding" flow-init="config.flowConfig"
                                 flow-files-submitted="$flow.upload()"
-                                flow-file-success="$file.msg = $message"
+                                flow-file-success="uploadFileSuccess( $file, $message, $flow )"
                                 flow-prevent-drop
                                 flow-drag-enter="style={border: '5px solid green'}">
                         <div class="row">
@@ -189,21 +189,23 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div ng-repeat="file in $flow.files" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 image-box">
-                                <!--<span class="title">{{file.name}}</span>-->
-                                <div class="thumbnail">
-                                    <img flow-img="file">
-                                </div>
-                                <div class="progress progress-striped" ng-class="{active: file.isUploading()}">
-                                    <div class="progress bg-light dker" ng-class="{active: $flow.isUploading()}">
-                                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
-                                             ng-style="{ 'width': file.progress() * 100 + '%' }"></div>
+                            <div ng-repeat="file in $flow.files">
+                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 image-box" ng-hide="file.isComplete()">
+                                    <!--<span class="title">{{file.name}}</span>-->
+                                    <div class="thumbnail">
+                                        <img flow-img="file">
                                     </div>
-                                </div>
-                                <div class="btn-group">
-                                    <a class="btn btn-xs btn-danger" ng-click="file.cancel()">
-                                        Remove
-                                    </a>
+                                    <div class="progress progress-striped" ng-class="{active: $flow.isUploading()}">
+                                        <div class="progress bg-light dker" ng-class="{active: $flow.isUploading()}">
+                                            <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
+                                                 ng-style="{ 'width': file.progress() * 100 + '%' }"></div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a class="btn btn-xs btn-danger" ng-click="file.cancel()">
+                                            Remove
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div ng-repeat="image in product.image_gallery" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 image-box"

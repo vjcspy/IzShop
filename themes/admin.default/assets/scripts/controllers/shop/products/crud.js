@@ -18,7 +18,7 @@
                         locale: {
                             format: 'MM/DD/YYYY',
                             cancelLabel: 'Xóa'
-                        }, 
+                        },
                         autoUpdateInput: false
                     }
                 };
@@ -28,6 +28,17 @@
                 }
                 else
                     $scope.product = {};
+
+                $scope.uploadFileSuccess = function ($file, $message, $flow) {
+                    var data = (JSON.parse($message));
+                    Product.saveProductImage({
+                        image_path: data.pathFile,
+                        product_id: $scope.product.entity_id
+                    }).then(function (res) {
+                        $scope.product.image_gallery = res.data.image_gallery;
+                        toastr.info('Luu anh thanh cong');
+                    })
+                };
 
                 $scope.saveProduct = function () {
                     Product.saveProductToServer($scope.product).then(function (res) {

@@ -16,6 +16,11 @@
                 var url = IzAdminConfigService.getConfig('product_save_url', 'admin');
 
                 return $http.post(url, productData);
+            };
+
+            this.saveProductImage = function (data) {
+                var url = IzAdminConfigService.getConfig('product_save_image_url', 'admin');
+                return $http.post(url, data);
             }
         }]);
 })(angular);
