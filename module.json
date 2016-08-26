@@ -1,17 +1,17 @@
 {
-    "name": "IzShop",
-    "alias": "izshop",
-    "description": "",
-    "keywords": [],
-    "active": 1,
-    "order": 0,
-    "providers": [
-        "Modules\\IzShop\\Providers\\IzShopServiceProvider",
-        "Modules\\IzShop\\Providers\\OverMenuServiceProvider",
-        "Modules\\IzShop\\Providers\\OverConfigServiceProvider"
-    ],
-    "aliases":{},
-    "files": [
-        "start.php"
-    ]
+  "name": "IzShop",
+  "alias": "izshop",
+  "description": "",
+  "keywords": [],
+  "active": 0,
+  "order": 0,
+  "providers": [
+    "Modules\\IzShop\\Providers\\IzShopServiceProvider",
+    "Modules\\IzShop\\Providers\\OverMenuServiceProvider",
+    "Modules\\IzShop\\Providers\\OverConfigServiceProvider"
+  ],
+  "aliases": {},
+  "files": [
+    "start.php"
+  ]
 }
